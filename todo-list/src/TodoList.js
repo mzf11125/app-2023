@@ -1,16 +1,17 @@
-// TodoList.js
-//File that hqndles the list of todos
 import React from 'react';
-import Todo from './Todo';
+import './App.css'; // Import your CSS file for TodoList
 
-const TodoList = ({ todos, onDelete }) => {
+function TodoList({ todos, onDelete }) {
   return (
-    <div>
+    <ul className="todo-list">
       {todos.map((todo) => (
-        <Todo key={todo.id} todo={todo} onDelete={onDelete} />
+        <li key={todo.id} className="todo-item">
+          <span>{todo.title}</span> {/* Assuming 'title' is the property for todo text */}
+          <button onClick={() => onDelete(todo.id)}>Delete</button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
-};
+}
 
 export default TodoList;
